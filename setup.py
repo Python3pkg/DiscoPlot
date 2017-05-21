@@ -8,8 +8,8 @@ import glob
 try:
     import pip
 except ImportError:
-    print "Installation of DiscoPlot requires pip. Please install it! See -"
-    print "http://pip.readthedocs.org/en/latest/installing.html"
+    print("Installation of DiscoPlot requires pip. Please install it! See -")
+    print("http://pip.readthedocs.org/en/latest/installing.html")
     sys.exit(1)
 
 from setuptools import setup
@@ -26,7 +26,7 @@ __url__ = 'https://github.com/BeatsonLab-MicrobialGenomics/DiscoPlot'
 
 # Helper functions
 if sys.argv[-1] == 'publish':
-    print "Please use twine or do_release.sh"
+    print("Please use twine or do_release.sh")
     sys.exit()
 
 if sys.argv[-1] == 'clean':

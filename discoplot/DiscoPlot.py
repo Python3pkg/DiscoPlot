@@ -84,7 +84,7 @@ def read_sbam(args):
         if args.bin_size is None:
             args.bin_size = sum(reflengths) / (args.size - (len(reflengths) -1) * (args.gap + 1)) + 1
         else:
-            args.size = sum(map(lambda x: x/args.bin_size, reflengths)) + (len(reflengths) -1) * args.gap + 1
+            args.size = sum([x/args.bin_size for x in reflengths]) + (len(reflengths) -1) * args.gap + 1
         for i in range(len(references)):
             refpos[references[i]] = currpos
             currpos += reflengths[i] / args.bin_size + args.gap
@@ -279,7 +279,7 @@ def read_sing(args):
         if args.bin_size is None:
             args.bin_size = sum(reflengths) / (args.size - (len(reflengths) -1) * (args.gap + 1))
         else:
-            args.size = sum(map(lambda x: x/args.bin_size, reflengths)) + (len(reflengths) -1) * args.gap
+            args.size = sum([x/args.bin_size for x in reflengths]) + (len(reflengths) -1) * args.gap
         for i in range(len(references)):
             refpos[references[i]] = currpos
             currpos += reflengths[i] / args.bin_size + args.gap
@@ -293,7 +293,7 @@ def read_sing(args):
     hits = []
     for line in blast:
         query, subject, ident, length, mm, indel, qstart, qstop, rstart, rstop, eval, bitscore = line.split()
-        qstart, qstop, rstart, rstop, length, mm, indel = map(int, [qstart, qstop, rstart, rstop, length, mm, indel])
+        qstart, qstop, rstart, rstop, length, mm, indel = list(map(int, [qstart, qstop, rstart, rstop, length, mm, indel]))
         if query != lastquery and lastquery != '':
             hits.sort(reverse=True)
             newhits = [hits[0]]
